@@ -23,6 +23,7 @@ async function writeHeaders() {
   array.push("amount_burnt");
   array.push("date_time");
   array.push("ledger_index");
+  array.push("txn_hash");
   writeStream.write('"' + array.join('","') + '"\n');
 }
 
@@ -41,6 +42,7 @@ async function processTransactions(transactions) {
           array.push(transaction.meta.delivered_amount.value);
           array.push(xrpl.rippleTimeToISOTime(transaction.tx_json.date));
           array.push(transaction.tx_json.ledger_index);
+          array.push(transaction.hash);
           writeStream.write('"' + array.join('","') + '"\n');
         }
       }
