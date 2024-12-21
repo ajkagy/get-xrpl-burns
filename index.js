@@ -35,7 +35,7 @@ async function processTransactions(transactions) {
         if (
           transaction.meta.delivered_amount.issuer == issuer &&
           transaction.meta.delivered_amount.currency == currency &&
-          transaction.tx_json.Destination == issuer
+          transaction.tx_json.Destination == issuer && transaction.meta.TransactionResult == 'tesSUCCESS'
         ) {
           let array = [];
           array.push(transaction.tx_json.Account);
